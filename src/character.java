@@ -1,5 +1,6 @@
 public class character {
 
+	public String name;
 	public int defence;
 	public int attack;
 	public int luck;
@@ -13,7 +14,8 @@ public class character {
 	public int gold;
 
 	//initializer
-	public character(int defence, int attack, int Health, int luck, int Exp){
+	public character(int defence, int attack, int Health, int luck, int Exp, String name){
+		this.name = name;
 		this.Exp = Exp;
 		this.defence = defence;
 		this.attack = attack;
