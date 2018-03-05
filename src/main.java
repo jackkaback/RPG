@@ -12,6 +12,9 @@ public class main {
 		String name = input.next();
 
 		Goat(statBoost, input);
+		System.out.println("\nThis next question will give you a free item\n");
+		System.out.println("The man now inquires about your job");
+
 		character user = new character(10+statBoost[0], 10+statBoost[1], 100+statBoost[2], 10+statBoost[3], 0, name);
 	}
 
@@ -39,7 +42,45 @@ public class main {
 			}
 		}
 
-		//Question 2
+		System.out.println("The old man acknowledges your explanation\n");
 
+		//Question 2
+		while(true){
+			System.out.println("The old man now points to your scar and inquires about it");
+			System.out.println("(1) blood letting [increases health] (2) stab wound [defence boost] (3) tripped on a stump [luck boost, ironically]");
+
+			char ch1 = (char) input.nextByte();
+
+			if (ch1 == 1){
+				stats[2] += 20;
+				break;
+			}
+			else if(ch1 == 2){
+				stats[0] += 5;
+				break;
+			}
+			else if(ch1 == 3){
+				stats[3] += 1;
+				break;
+			}
+		}
+
+		//Question 3
+		while (true) {
+			System.out.println("How long have you been in this land?");
+			System.out.println("(1) not very long [increases health a lot] (2) quite awhile [increases defence and attack]");
+
+			char ch1 = (char) input.nextByte();
+
+			if (ch1 == 1){
+				stats[2] += 40;
+				break;
+			}
+			else if(ch1 == 2){
+				stats[1] += 5;
+				stats[0] += 5;
+				break;
+			}
+		}
 	}
 }
