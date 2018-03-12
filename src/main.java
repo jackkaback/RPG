@@ -12,10 +12,29 @@ public class main {
 		String name = input.next();
 
 		Goat(statBoost, input);
-		System.out.println("\nThis next question will give you a free item\n");
-		System.out.println("The man now inquires about your job");
 
-		character user = new character(10+statBoost[0], 10+statBoost[1], 100+statBoost[2], 10+statBoost[3], 0, name);
+		//TODO build item list
+		while(true) {
+			System.out.println("So what do you do?");
+			System.out.println("(1) Blacksmith [better starting sword]\n(2) Banker [extra starting money\n(3) Knight [better armor]");
+			char ch1 = (char) input.nextByte();
+
+			if (ch1 == 1){
+
+				break;
+			}
+			else if(ch1 == 2){
+
+				break;
+			}
+			else if(ch1 == 3){
+
+				break;
+			}
+
+
+		}
+		character user = new character(10+statBoost[0], 10+statBoost[1], 100+statBoost[2], 10+statBoost[3], 200, 0, name);
 	}
 
 	public static void Goat(int[] stats, Scanner input) {
@@ -29,7 +48,7 @@ public class main {
 		//Question 1
 		while (true) {
 			System.out.println("The old man asks how you got knocked out last night");
-			System.out.println("(1) Bar fight [increases attack] (2) guard knocked me out [increases defence]");
+			System.out.println("(1) Bar fight [increases attack]\n(2) guard knocked me out [increases defence]");
 			char ch1 = (char) input.nextByte();
 
 			if (ch1 == 1){
@@ -46,8 +65,8 @@ public class main {
 
 		//Question 2
 		while(true){
-			System.out.println("The old man now points to your scar and inquires about it");
-			System.out.println("(1) blood letting [increases health] (2) stab wound [defence boost] (3) tripped on a stump [luck boost, ironically]");
+			System.out.println("\nThe old man now points to your scar and inquires about it");
+			System.out.println("(1) blood letting [increases health]\n(2) stab wound [defence boost]\n(3) tripped on a stump [luck boost, ironically]");
 
 			char ch1 = (char) input.nextByte();
 
@@ -67,8 +86,8 @@ public class main {
 
 		//Question 3
 		while (true) {
-			System.out.println("How long have you been in this land?");
-			System.out.println("(1) not very long [increases health a lot] (2) quite awhile [increases defence and attack]");
+			System.out.println("\nHow long have you been in this land?");
+			System.out.println("(1) not very long [increases health a lot]\n(2) quite awhile [increases defence and attack]");
 
 			char ch1 = (char) input.nextByte();
 
