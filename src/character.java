@@ -100,7 +100,7 @@ public class character {
 	private void levelUp() {
 
 		while (true) {
-			expThreshold = Math.pow(1.5, level) * 100;
+			expThreshold = (int) Math.pow(1.5, level) * 100;
 			if (Exp >= expThreshold) {
 
 				//removed over flowed EXP
