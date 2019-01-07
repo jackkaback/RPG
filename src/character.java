@@ -13,8 +13,8 @@ public class character {
 	public int level = 1;
 	public int Exp;
 
-	//ammont of points to distribute on level up
-	public int lvlPoints;
+	//amount of points to distribute on level up
+	private int lvlPoints;
 
 	//threshold to level up
 	private int expThreshold;
@@ -29,22 +29,15 @@ public class character {
 
 	//initializer
 	public character(int defence, int attack, int Health, int luck, int mana, int Exp, String name) {
+
 		this.name = name;
-
 		this.Exp = Exp;
-
 		this.defence = defence;
-
 		this.attack = attack;
-
 		this.luck = luck;
-
 		this.maxHealth = Health;
-
 		this.currHealth = Health;
-
 		this.maxMana = mana;
-
 		this.currMana = mana;
 
 		levelUp();
@@ -57,7 +50,7 @@ public class character {
 	}
 
 
-	//allows the distrobution of level up points
+	//allows the distribution of level up points
 	private void addLvlPoints() {
 
 		if (level % 10 == 0) {
