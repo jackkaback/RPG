@@ -16,7 +16,7 @@ public class main {
 		//TODO build item list
 		while(true) {
 			System.out.println("So what do you do?");
-			System.out.println("(1) Blacksmith [better starting sword]\n(2) Banker [extra starting money\n(3) Knight [better armor]");
+			System.out.println("(1) Blacksmith [better starting sword]\n(2) Banker [extra starting money]\n(3) Knight [better armor]");
 			char ch1 = (char) input.nextByte();
 
 			if (ch1 == 1){
@@ -35,6 +35,11 @@ public class main {
 
 		}
 		character user = new character(10+statBoost[0], 10+statBoost[1], 100+statBoost[2], 10+statBoost[3], 200, 0, name);
+	}
+
+	public static void generateFight(character user){
+		monster Steve = new monster(user.level);
+
 	}
 
 	public static void Goat(int[] stats, Scanner input) {
