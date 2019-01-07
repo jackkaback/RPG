@@ -53,12 +53,44 @@ public class character {
 	//allows the distribution of level up points
 	private void addLvlPoints() {
 
+		//certain levels let players get more lives
 		if (level % 10 == 0) {
 			lvlPoints = 5;
 		} else if (level % 5 == 0) {
 			lvlPoints = 3;
 		} else {
 			lvlPoints = 2;
+		}
+
+		//distribute the points
+		for(int ii = 0; ii < lvlPoints;){
+			System.out.println("You have " + (lvlPoints - ii) + " points remaining");
+			System.out.println("(A)ttack, (D)efense, (L)uck, (H)ealth, or (M)ana");
+
+			String temp = input.nextLine().toLowerCase();
+			if(temp.contains("a")){
+				attack += 3;
+				ii++;
+			}
+			else if(temp.contains("d")){
+				defence += 3;
+				ii++;
+			}
+			else if(temp.contains("l")){
+				luck += 1;
+				ii++;
+			}
+			else if(temp.contains("h")){
+				maxHealth += 10;
+				ii++;
+			}
+			else if(temp.contains("m")){
+				maxMana += 10;
+				ii++;
+			}
+			else{
+				System.out.println("Invalid input");
+			}
 		}
 
 	}
@@ -70,10 +102,18 @@ public class character {
 		while (true) {
 			expThreshold = Math.pow(1.5, level) * 100;
 			if (Exp >= expThreshold) {
+
+				//removed over flowed EXP
 				Exp -= expThreshold;
 				level++;
+
+				//level up
 				System.out.println("You leveled up.");
 				addLvlPoints();
+
+				//set current HP and mana to max
+				currMana = maxMana;
+				currHealth = maxHealth;
 			} else {
 				break;
 			}
