@@ -11,7 +11,7 @@ public class character {
 	public int luck;
 
 	public int level = 1;
-	private int Exp;
+	private int Exp = 0;
 
 	//amount of points to distribute on level up
 	private int lvlPoints;
@@ -22,25 +22,20 @@ public class character {
 
 	private int maxHealth;
 	public int currHealth;
-	public int maxMana;
-	private int currMana;
+	public int maxMana = 200;
+	private int currMana = 200;
 
-	public int gold;
+	public int gold = 10;
 
 	//initializer
-	public character(int defence, int attack, int Health, int luck, int mana, int Exp, String name) {
+	public character(int defence, int attack, int Health, int luck, String name) {
 
 		this.name = name;
-		this.Exp = Exp;
 		this.defence = defence;
 		this.attack = attack;
 		this.luck = luck;
 		this.maxHealth = Health;
 		this.currHealth = Health;
-		this.maxMana = mana;
-		this.currMana = mana;
-
-		levelUp();
 	}
 
 	//adds experience points

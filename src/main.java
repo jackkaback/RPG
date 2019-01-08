@@ -1,11 +1,21 @@
 import java.util.Scanner;
+import java.util.Random;
+
 
 public class main {
 
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
-		int [] statBoost = new int [4];
+
+		//for the stat boost from the goat
+		int[] statBoost = new int[4];
+
+
+		//the assorted cities
+		city[] cities = new city[15];
+		generateCities(cities);
+
 
 		System.out.println("You find yourself in a dimly lit room as an old man helps you get off the floor.");
 		System.out.print("The old man asks \"What's your name Stranger?\"\t");
@@ -13,32 +23,74 @@ public class main {
 
 		Goat(statBoost, input);
 
+		character user = new character(10+statBoost[0], 10+statBoost[1], 100+statBoost[2], 10+statBoost[3], name);
+
 		//TODO build item list
-		while(true) {
+		while (true) {
 			System.out.println("So what do you do?");
 			System.out.println("(1) Blacksmith [better starting sword]\n(2) Banker [extra starting money]\n(3) Knight [better armor]");
 			char ch1 = (char) input.nextByte();
 
-			if (ch1 == 1){
+			if (ch1 == 1) {
 
 				break;
-			}
-			else if(ch1 == 2){
-
+			} else if (ch1 == 2) {
+				user.gold += 1000;
 				break;
-			}
-			else if(ch1 == 3){
+			} else if (ch1 == 3) {
 
 				break;
 			}
 
 
 		}
-		character user = new character(10+statBoost[0], 10+statBoost[1], 100+statBoost[2], 10+statBoost[3], 200, 0, name);
 	}
 
 	public static void generateFight(character user){
 		monster Steve = new monster(user.level);
+
+	}
+
+	//Randomly spawns the cities and ensures that they don't overlap
+	public static void generateCities(city[] c){
+
+		//names of the cities and the array of X/Y cordinates for the cities
+		String[] names = new String [] {"John", "New Mombasa", "Seattle", "Seoul", "Yemen",
+				"Vvardenfell", "Los Santos", "Shermer", "Mordor", "Rapture",
+				"Podgorica", "Ljubljana", "Elvenwood", "Megaton", "Hanover"};
+		int[] X = new int[c.length];
+		int[] Y = new int[c.length];
+
+		Random rand = new Random();
+
+		//gnerates the cities
+		while(true){
+			for(int ii = 1; ii < X.length; ii++){
+
+				X[ii] = rand.nextInt(21) - 10;
+				Y[ii] = rand.nextInt(21) - 10;
+			}
+
+			for(int jj = 0; jj < X.length; jj++){
+				for(int ii = 0; ii < X.length; ii++){
+					if (ii == jj) {
+						continue;
+					}
+					if (X[ii] == X [jj] && Y [ii] == Y [jj]){
+						X[ii] = rand.nextInt(21) - 10;
+						Y[ii] = rand.nextInt(21) - 10;
+						jj = 0;
+						ii = 0;
+					}
+				}
+			}
+			break;
+		}
+
+		//initializes the cities
+		for(int ii = 0; ii < X.length; ii++){
+			c[ii] = new city(X[ii], Y[ii], names[ii])
+		}
 
 	}
 

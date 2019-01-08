@@ -25,8 +25,6 @@ public class monster {
 		setRewardGold();
 	}
 
-
-	//TODO: This stuff
 	private void setAttack(){
 		attack = rand.nextInt(Lvl * 3) + 1;
 	}
