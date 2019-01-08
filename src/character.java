@@ -11,7 +11,7 @@ public class character {
 	public int luck;
 
 	public int level = 1;
-	public int Exp;
+	private int Exp;
 
 	//amount of points to distribute on level up
 	private int lvlPoints;
@@ -20,10 +20,10 @@ public class character {
 	private int expThreshold;
 
 
-	public int maxHealth;
+	private int maxHealth;
 	public int currHealth;
 	public int maxMana;
-	public int currMana;
+	private int currMana;
 
 	public int gold;
 
@@ -108,7 +108,7 @@ public class character {
 				level++;
 
 				//level up
-				System.out.println("You leveled up.");
+				System.out.println("You leveled up!\nYou're lvl: " + level + " now");
 				addLvlPoints();
 
 				//set current HP and mana to max
