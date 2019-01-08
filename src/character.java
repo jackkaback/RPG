@@ -9,6 +9,8 @@ public class character {
 	public int defence;
 	public int attack;
 	public int luck;
+	private weapon attacker;
+	private armor defender;
 
 	public int level = 1;
 	private int Exp = 0;

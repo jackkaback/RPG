@@ -12,10 +12,13 @@ public class main {
 		int[] statBoost = new int[4];
 
 
-		//the assorted cities
-		city[] cities = new city[15];
-		generateCities(cities);
+		//the assorted cities, done this way to ensure that the number of cities equals the number of city names
+		city[] cities = generateCities();
 
+
+		for(int ii = 0; ii < cities.length; ii++){
+			System.out.println(cities[ii].cityName);
+		}
 
 		System.out.println("You find yourself in a dimly lit room as an old man helps you get off the floor.");
 		System.out.print("The old man asks \"What's your name Stranger?\"\t");
@@ -41,9 +44,10 @@ public class main {
 
 				break;
 			}
-
-
 		}
+
+
+
 	}
 
 	public static void generateFight(character user){
@@ -52,14 +56,18 @@ public class main {
 	}
 
 	//Randomly spawns the cities and ensures that they don't overlap
-	public static void generateCities(city[] c){
+	public static city[] generateCities(){
 
 		//names of the cities and the array of X/Y cordinates for the cities
-		String[] names = new String [] {"John", "New Mombasa", "Seattle", "Seoul", "Yemen",
-				"Vvardenfell", "Los Santos", "Shermer", "Mordor", "Rapture",
-				"Podgorica", "Ljubljana", "Elvenwood", "Megaton", "Hanover"};
+		String[] names = new String [] {"John", "New Mombasa", "Seattle", "Seoul", "Yemen", "Vvardenfell", "Los Santos",
+				"Shermer", "Mordor", "Rapture","Podgorica", "Ljubljana", "Elvenwood", "Megaton", "Hanover"};
+
+		city[] c = new city[names.length];
 		int[] X = new int[c.length];
 		int[] Y = new int[c.length];
+
+		//for easy configuing the cordinates
+		int range = 21;
 
 		Random rand = new Random();
 
@@ -67,8 +75,8 @@ public class main {
 		while(true){
 			for(int ii = 1; ii < X.length; ii++){
 
-				X[ii] = rand.nextInt(21) - 10;
-				Y[ii] = rand.nextInt(21) - 10;
+				X[ii] = rand.nextInt(range) - 10;
+				Y[ii] = rand.nextInt(range) - 10;
 			}
 
 			for(int jj = 0; jj < X.length; jj++){
@@ -77,8 +85,8 @@ public class main {
 						continue;
 					}
 					if (X[ii] == X [jj] && Y [ii] == Y [jj]){
-						X[ii] = rand.nextInt(21) - 10;
-						Y[ii] = rand.nextInt(21) - 10;
+						X[ii] = rand.nextInt(range) - 10;
+						Y[ii] = rand.nextInt(range) - 10;
 						jj = 0;
 						ii = 0;
 					}
@@ -89,9 +97,11 @@ public class main {
 
 		//initializes the cities
 		for(int ii = 0; ii < X.length; ii++){
-			c[ii] = new city(X[ii], Y[ii], names[ii])
+			c[ii] = new city(X[ii], Y[ii], names[ii]);
 		}
 
+
+		return c;
 	}
 
 	public static void Goat(int[] stats, Scanner input) {
