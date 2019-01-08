@@ -117,4 +117,29 @@ public class character {
 
 		}
 	}
+
+	//add or remove weapon
+	public void addWeapon(weapon weap){
+		attacker = weap;
+		attack += attacker.getAttackBoost();
+	}
+	public void removeWeapon(){
+		attack -= attacker.getAttackBoost();
+		attacker = null;
+	}
+
+
+	//add or remove armor
+	public void addArmor(armor arm){
+		defender = arm;
+		defence += defender.getDefenseBoost();
+		maxHealth += defender.getHealthBoost();
+		currHealth += defender.getHealthBoost();
+	}
+	public void removeArmor(){
+		defence -= defender.getDefenseBoost();
+		maxHealth -= defender.getHealthBoost();
+		currHealth -= defender.getHealthBoost();
+		defender = null;
+	}
 }
