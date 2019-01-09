@@ -15,11 +15,6 @@ public class main {
 		//the assorted cities, done this way to ensure that the number of cities equals the number of city names
 		city[] cities = generateCities();
 
-
-		for(int ii = 0; ii < cities.length; ii++){
-			System.out.println(cities[ii].cityName);
-		}
-
 		System.out.println("You find yourself in a dimly lit room as an old man helps you get off the floor.");
 		System.out.print("The old man asks \"What's your name Stranger?\"\t");
 		String name = input.next();

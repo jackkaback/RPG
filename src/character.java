@@ -153,7 +153,7 @@ public class character {
 	private void sortInventory(){
 		for(int i = 0; i < lastItem; i++) {
 			for (int j = 1; j < (lastItem - i); j++) {
-				if(inventory[j-1].getCost < inventory[j].getCost) {
+				if(inventory[j-1].cost < inventory[j].cost) {
 					//swap elements
 					item temp = inventory[j - 1];
 					inventory[j - 1] = inventory[j];
@@ -170,7 +170,7 @@ public class character {
 	public void addInventory(item newItem) {
 		inventory[lastItem] = newItem;
 		lastItem++;
-		sortInventory;
+		sortInventory();
 	}
 	public void removeItem(int i){
 		inventory[i] = null;
