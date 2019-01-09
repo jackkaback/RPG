@@ -2,10 +2,12 @@ import java.util.Random;
 
 public class worldMap{
 	public city[] cities;
+	public int[] mossColony = {0,0};
 	public int[] location = {0,0};
 
 	public worldMap(int size){
 		generateCities(size);
+		generateMossColony(range);
 	}
 
 	//Randomly spawns the cities and ensures that they don't overlap
@@ -22,32 +24,51 @@ public class worldMap{
 		Random rand = new Random();
 
 		//genrates the cities
-		while(true){
-			for(int ii = 1; ii < X.length; ii++){
+		for(int ii = 1; ii < X.length; ii++){
 
-				X[ii] = rand.nextInt(range) - 10;
-				Y[ii] = rand.nextInt(range) - 10;
-			}
+			X[ii] = rand.nextInt(range) - 10;
+			Y[ii] = rand.nextInt(range) - 10;
+		}
 
-			for(int jj = 0; jj < X.length; jj++){
-				for(int ii = 0; ii < X.length; ii++){
-					if (ii == jj) {
-						continue;
-					}
-					if (X[ii] == X [jj] && Y [ii] == Y [jj]){
-						X[ii] = rand.nextInt(range) - 10;
-						Y[ii] = rand.nextInt(range) - 10;
-						jj = 0;
-						ii = 0;
-					}
+		//validating there's no overlap
+		for(int jj = 0; jj < X.length; jj++){
+			for(int ii = 0; ii < X.length; ii++){
+				if (ii == jj) {
+					continue;
+				}
+				if (X[ii] == X [jj] && Y [ii] == Y [jj]){
+					X[ii] = rand.nextInt(range) - 10;
+					Y[ii] = rand.nextInt(range) - 10;
+					jj = 0;
+					ii = 0;
 				}
 			}
-			break;
 		}
+
 
 		//initializes the cities
 		for(int ii = 0; ii < X.length; ii++){
 			cities[ii] = new city(X[ii], Y[ii], names[ii]);
+		}
+	}
+
+	//genarates the mossColony location
+	private void generateMossColony(){
+
+		//randomly places the moss colony
+		Random rand = new Random();
+		mossColony[0] = rand.nextInt(range) - 10;
+		mossColony[1] = rand.nextInt(range) - 10;
+
+
+		//makes sure it doesn't overlap with a city
+		for(int jj = 0; jj < cities.length; jj++){
+
+			if (cities[jj].x == mossColony[0] && cities[jj].y == mossColony[1]){
+				mossColony[0] = rand.nextInt(range) - 10;
+				mossColony[1] = rand.nextInt(range) - 10;
+				jj = 0;
+			}
 		}
 	}
 }
