@@ -19,7 +19,7 @@ public class worldMap{
 
 		Random rand = new Random();
 
-		//gnerates the cities
+		//genrates the cities
 		while(true){
 			for(int ii = 1; ii < X.length; ii++){
 

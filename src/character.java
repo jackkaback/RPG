@@ -7,9 +7,9 @@ public class character {
 
 	//stats
 	public String name;
-	public int defence;
-	public int attack;
-	public int luck;
+	public int defence = 10;
+	public int attack = 10;
+	public int luck = 10;
 
 	//equipment
 	private weapon attacker;
@@ -31,21 +31,83 @@ public class character {
 
 
 	//healh and mana stats
-	private int maxHealth;
-	public int currHealth;
+	private int maxHealth = 100;
+	public int currHealth = 100;
 	public int maxMana = 200;
 	private int currMana = 200;
 
 	public int gold = 10;
 
 	//initializer
-	public character(int defence, int attack, int Health, int luck, String name) {
-		this.name = name;
-		this.defence = defence;
-		this.attack = attack;
-		this.luck = luck;
-		this.maxHealth = Health;
-		this.currHealth = Health;
+	public character() {
+
+		System.out.println("You find yourself in a dimly lit room as an old man helps you get off the floor.");
+		System.out.print("The old man asks \"What's your name Stranger?\"\t");
+		String name = input.next();
+
+		Goat();
+	}
+
+	public static void Goat() {
+
+		System.out.println("\n\nThe answers to the following questions will determine your initial stats\n");
+
+		//Question 1
+		while (true) {
+			System.out.println("The old man asks how you got knocked out last night");
+			System.out.println("(1) Bar fight [increases attack]\n(2) guard knocked me out [increases defence]");
+			char ch1 = (char) input.nextByte();
+
+			if (ch1 == 1){
+				attack += 5;
+				break;
+			}
+			else if(ch1 == 2){
+				defence += 5;
+				break;
+			}
+		}
+
+		System.out.println("The old man acknowledges your explanation\n");
+
+		//Question 2
+		while(true){
+			System.out.println("\nThe old man now points to your scar and inquires about it");
+			System.out.println("(1) blood letting [increases health]\n(2) stab wound [defence boost]\n(3) tripped on a stump [luck boost, ironically]");
+
+			char ch1 = (char) input.nextByte();
+
+			if (ch1 == 1){
+				maxHealth += 20;
+				break;
+			}
+			else if(ch1 == 2){
+				defence += 5;
+				break;
+			}
+			else if(ch1 == 3){
+				luck += 1;
+				break;
+			}
+		}
+
+		//Question 3
+		while (true) {
+			System.out.println("\nHow long have you been in this land?");
+			System.out.println("(1) not very long [increases health a lot]\n(2) quite awhile [increases defence and attack]");
+
+			char ch1 = (char) input.nextByte();
+
+			if (ch1 == 1){
+				maxHealth += 40;
+				break;
+			}
+			else if(ch1 == 2){
+				defense += 5;
+				attack += 5;
+				break;
+			}
+		}
 	}
 
 	//adds experience points
