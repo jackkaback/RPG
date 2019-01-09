@@ -43,12 +43,15 @@ public class character {
 
 		System.out.println("You find yourself in a dimly lit room as an old man helps you get off the floor.");
 		System.out.print("The old man asks \"What's your name Stranger?\"\t");
-		String name = input.next();
+		name = input.next();
 
 		Goat();
+		currHealth = maxHealth;
 	}
 
-	public static void Goat() {
+
+
+	public void Goat() {
 
 		System.out.println("\n\nThe answers to the following questions will determine your initial stats\n");
 
@@ -103,7 +106,7 @@ public class character {
 				break;
 			}
 			else if(ch1 == 2){
-				defense += 5;
+				defence += 5;
 				attack += 5;
 				break;
 			}

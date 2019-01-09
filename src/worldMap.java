@@ -1,6 +1,8 @@
+import java.util.Random;
+
 public class worldMap{
-	public city[] cities = new city[];
-	public int location = {0,0};
+	public city[] cities;
+	public int[] location = {0,0};
 
 	public worldMap(int size){
 		generateCities(size);
@@ -14,8 +16,8 @@ public class worldMap{
 				"Shermer", "Mordor", "Rapture","Podgorica", "Ljubljana", "Elvenwood", "Megaton", "Hanover"};
 
 		city[] cities = new city[names.length];
-		int[] X = new int[c.length];
-		int[] Y = new int[c.length];
+		int[] X = new int[cities.length];
+		int[] Y = new int[cities.length];
 
 		Random rand = new Random();
 

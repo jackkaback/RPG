@@ -19,7 +19,7 @@ public class main {
 			char ch1 = (char) input.nextByte();
 
 			if (ch1 == 1) {
-				weapon steve = new weapon(20, "Umbra");
+				weapon steve = new weapon(60, "Umbra");
 				user.addInventory(steve);
 				user.addWeapon(steve);
 				break;

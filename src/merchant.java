@@ -1,6 +1,6 @@
 public class merchant{
 
-	private item[] = new item[30];
+	private item[] supply = new item[30];
 
 	public merchant(){
 		initializeItems();
