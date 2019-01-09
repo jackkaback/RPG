@@ -5,9 +5,9 @@ public class weapon extends item{
 
 
 	//initializer
-	public weapon(int attackBoost, int cost, String weaponName){
+	public weapon(int attackBoost, String weaponName){
 		this.attackBoost = attackBoost;
-		this.cost = cost;
+		cost = attackBoost * 2;
 		this.weaponName = weaponName;
 	}
 

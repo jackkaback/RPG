@@ -5,10 +5,10 @@ public class armor extends item{
 	private String armorName;
 
 	//initializer
-	public armor(int defenseBoost, int healthBoost, int cost, String armorName){
+	public armor(int defenseBoost, int healthBoost, String armorName){
 		this.defenseBoost = defenseBoost;
 		this.healthBoost = healthBoost;
-		this.cost = cost;
+		cost = healthBoost/2 + defenseBoost;
 		this.armorName = armorName;
 	}
 

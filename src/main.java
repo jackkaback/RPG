@@ -11,9 +11,7 @@ public class main {
 		//for the stat boost from the goat
 		int[] statBoost = new int[4];
 
-
-		//the assorted cities, done this way to ensure that the number of cities equals the number of city names
-		city[] cities = generateCities();
+		worldMap map = new worldMap(35);
 
 		System.out.println("You find yourself in a dimly lit room as an old man helps you get off the floor.");
 		System.out.print("The old man asks \"What's your name Stranger?\"\t");
@@ -30,73 +28,26 @@ public class main {
 			char ch1 = (char) input.nextByte();
 
 			if (ch1 == 1) {
-
+				weapon steve = new weapon(20, "Umbra");
+				user.addInventory(steve);
+				user.addWeapon(steve);
 				break;
 			} else if (ch1 == 2) {
 				user.gold += 1000;
 				break;
 			} else if (ch1 == 3) {
-
+				armor steve = new armor(10, 100, "black mesa");
+				user.addInventory(steve);
+				user.addArmor(steve);
 				break;
 			}
 		}
-
-
-
 	}
 
+	//TODO this
 	public static void generateFight(character user){
 		monster Steve = new monster(user.level);
 
-	}
-
-	//Randomly spawns the cities and ensures that they don't overlap
-	public static city[] generateCities(){
-
-		//names of the cities and the array of X/Y cordinates for the cities
-		String[] names = new String [] {"John", "New Mombasa", "Seattle", "Seoul", "Yemen", "Vvardenfell", "Los Santos",
-				"Shermer", "Mordor", "Rapture","Podgorica", "Ljubljana", "Elvenwood", "Megaton", "Hanover"};
-
-		city[] c = new city[names.length];
-		int[] X = new int[c.length];
-		int[] Y = new int[c.length];
-
-		//for easy configuing the cordinates
-		int range = 21;
-
-		Random rand = new Random();
-
-		//gnerates the cities
-		while(true){
-			for(int ii = 1; ii < X.length; ii++){
-
-				X[ii] = rand.nextInt(range) - 10;
-				Y[ii] = rand.nextInt(range) - 10;
-			}
-
-			for(int jj = 0; jj < X.length; jj++){
-				for(int ii = 0; ii < X.length; ii++){
-					if (ii == jj) {
-						continue;
-					}
-					if (X[ii] == X [jj] && Y [ii] == Y [jj]){
-						X[ii] = rand.nextInt(range) - 10;
-						Y[ii] = rand.nextInt(range) - 10;
-						jj = 0;
-						ii = 0;
-					}
-				}
-			}
-			break;
-		}
-
-		//initializes the cities
-		for(int ii = 0; ii < X.length; ii++){
-			c[ii] = new city(X[ii], Y[ii], names[ii]);
-		}
-
-
-		return c;
 	}
 
 	public static void Goat(int[] stats, Scanner input) {
