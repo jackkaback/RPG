@@ -1,7 +1,6 @@
-public class weapon{
+public class weapon extends item{
 
 	private int attackBoost;
-	private int cost;
 	private String weaponName;
 
 
@@ -14,10 +13,6 @@ public class weapon{
 
 	public int getAttackBoost() {
 		return attackBoost;
-	}
-
-	public int getCost() {
-		return cost;
 	}
 
 	public String getWeaponName() {

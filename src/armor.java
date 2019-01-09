@@ -1,8 +1,7 @@
-public class armor{
+public class armor extends item{
 
 	private int defenseBoost;
 	private int healthBoost;
-	private int cost;
 	private String armorName;
 
 	//initializer
@@ -19,10 +18,6 @@ public class armor{
 
 	public int getHealthBoost() {
 		return healthBoost;
-	}
-
-	public int getCost() {
-		return cost;
 	}
 
 	public String getArmorName() {
