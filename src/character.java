@@ -38,6 +38,8 @@ public class character {
 
 	public int gold = 10;
 
+	public int location = {0,0};
+
 	//initializer
 	public character() {
 
@@ -47,6 +49,8 @@ public class character {
 
 		Goat();
 		currHealth = maxHealth;
+
+		worldMap map = new worldMap(35);
 	}
 
 
@@ -108,6 +112,54 @@ public class character {
 			else if(ch1 == 2){
 				defence += 5;
 				attack += 5;
+				break;
+			}
+		}
+	}
+
+
+	//TODO this
+	public void mainLoop(){
+
+		//play the game while play has health
+		while(currHealth > 0) {
+			move();
+
+			if(inCity()){
+				//CITY STUFF
+			}
+			else if(inMoss()){
+				//MOSS PEOPLE STUFF
+			}
+			else{
+				//CHANCE FOR FIGHT
+			}
+		}
+	}
+
+	private void move(){
+		while(true){
+			System.out.println("(N)orth, (S)outh, (E)ast, or (W)est");
+			String temp = input.next().toLowerCase();
+
+			if(temp.contains("n")){
+				System.out.println("You move north");
+				location[0]++;
+				break;
+			}
+			else if(temp.contains("s")){
+				System.out.println("You move south");
+				location[0]--;
+				break;
+			}
+			else if(temp.contains("e")){
+				System.out.println("You move East");
+				location[1]++;
+				break;
+			}
+			else if(temp.contains("w")){
+				System.out.println("You move West");
+				location[1]--;
 				break;
 			}
 		}
@@ -241,5 +293,16 @@ public class character {
 		inventory[i] = null;
 		sortInventory();
 		lastItem--;
+	}
+
+
+	//TODO this
+	public void generateFight(){
+		monster Steve = new monster(level);
+
+	}
+
+	private boolean inMoss(){
+		return location == map.mossColony;
 	}
 }

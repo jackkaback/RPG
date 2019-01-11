@@ -8,8 +8,6 @@ public class main {
 
 		Scanner input = new Scanner(System.in);
 
-		worldMap map = new worldMap(35);
-
 		character user = new character();
 
 		//TODO build item list
@@ -33,11 +31,7 @@ public class main {
 				break;
 			}
 		}
-	}
 
-	//TODO this
-	public static void generateFight(character user){
-		monster Steve = new monster(user.level);
-
+		user.mainLoop();
 	}
 }

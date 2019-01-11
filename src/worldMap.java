@@ -3,7 +3,6 @@ import java.util.Random;
 public class worldMap{
 	public city[] cities;
 	public int[] mossColony = {0,0};
-	public int[] location = {0,0};
 
 	public worldMap(int size){
 		generateCities(size);
