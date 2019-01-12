@@ -5,6 +5,8 @@ public class character {
 
 	private Scanner input = new Scanner(System.in);
 
+	private worldMap map;
+
 	//stats
 	public String name;
 	public int defence = 10;
@@ -38,7 +40,7 @@ public class character {
 
 	public int gold = 10;
 
-	public int location = {0,0};
+	private int[] location = {0,0};
 
 	//initializer
 	public character() {
@@ -124,8 +126,9 @@ public class character {
 		//play the game while play has health
 		while(currHealth > 0) {
 			move();
-
-			if(inCity()){
+			int temp = inCity();
+			if(temp != -1){
+				System.out.println("You're in " + map.cities[temp].cityName);
 				//CITY STUFF
 			}
 			else if(inMoss()){
@@ -243,6 +246,10 @@ public class character {
 
 	//add or remove weapon
 	public void addWeapon(weapon weap){
+		if(attacker != null){
+			removeWeapon();
+		}
+
 		attacker = weap;
 		attack += attacker.getAttackBoost();
 	}
@@ -250,8 +257,13 @@ public class character {
 		attack -= attacker.getAttackBoost();
 		attacker = null;
 	}
+
 	//add or remove armor
 	public void addArmor(armor arm){
+		if(defender != null){
+			removeArmor();
+		}
+
 		defender = arm;
 		defence += defender.getDefenseBoost();
 		maxHealth += defender.getHealthBoost();
@@ -297,12 +309,28 @@ public class character {
 
 
 	//TODO this
-	public void generateFight(){
+	private void generateFight(){
 		monster Steve = new monster(level);
 
 	}
 
+
+	//checks if the user is in the moss colony
 	private boolean inMoss(){
 		return location == map.mossColony;
+	}
+
+	//checks if the user is in a city and returns which on they're in
+	private int inCity(){
+
+		//runs through every city in the map
+		for(int i = 0; i < map.cities.length; ii++) {
+			if (location[0] == map.cities[i].x && location[1] == map.cities[i].y) {
+				return i;
+			}
+		}
+
+		//if not in a city then return -1
+		return -1;
 	}
 }

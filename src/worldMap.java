@@ -6,7 +6,7 @@ public class worldMap{
 
 	public worldMap(int size){
 		generateCities(size);
-		generateMossColony(range);
+		generateMossColony(size);
 	}
 
 	//Randomly spawns the cities and ensures that they don't overlap
@@ -52,7 +52,7 @@ public class worldMap{
 	}
 
 	//genarates the mossColony location
-	private void generateMossColony(){
+	private void generateMossColony(int range){
 
 		//randomly places the moss colony
 		Random rand = new Random();
