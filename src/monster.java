@@ -42,6 +42,10 @@ public class monster {
 		return name;
 	}
 
+	public boolean isAlive(){
+		return HP > 0;
+	}
+
 	private void setName(){
 		String[] arr = new String[]  {"loch ness monster", "guard", "mob of bunnies", "Gryffin", "goblin",
 				"rotting fish", "thief", "cannibal", "wolf", "MISSINGNO", "lost soul", "giant spider", "dragon", "giant",

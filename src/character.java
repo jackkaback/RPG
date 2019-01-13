@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.lang.Math;
+import java.util.Random;
 
 public class character {
 
@@ -123,20 +124,31 @@ public class character {
 	//TODO this
 	public void mainLoop(){
 
+		Random rand = new Random();
+
 		//play the game while play has health
 		while(currHealth > 0) {
 			move();
 			int temp = inCity();
+
 			if(temp != -1){
-				System.out.println("You're in " + map.cities[temp].cityName);
 				//CITY STUFF
+				System.out.println("You're in " + map.cities[temp].cityName);
 			}
+
+			//MOSS PEOPLE STUFF
 			else if(inMoss()){
-				//MOSS PEOPLE STUFF
+				System.out.println("You've entered a moss colony");
+
 			}
+
 			else{
 				//CHANCE FOR FIGHT
+				if (rand.nextInt(10) == 1) {
+					generateFight();
+				}
 			}
+
 		}
 	}
 
@@ -312,6 +324,9 @@ public class character {
 	private void generateFight(){
 		monster Steve = new monster(level);
 
+		while (currHealth > 0 && Steve.isAlive()){
+
+		}
 	}
 
 
