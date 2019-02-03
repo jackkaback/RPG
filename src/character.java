@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.lang.Math;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class character {
@@ -22,6 +23,8 @@ public class character {
 	private item[] inventory = new item [30];
 	private int lastItem = 0;
 
+	private ArrayList<spell> spellbook = new ArrayList<spell>();
+	
 	//leveling info
 	public int level = 1;
 	private int Exp = 0;
@@ -317,6 +320,10 @@ public class character {
 		inventory[i] = null;
 		sortInventory();
 		lastItem--;
+	}
+
+	public void addSpell(spell newSpell){
+		spellbook.add(newSpell);
 	}
 
 
