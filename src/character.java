@@ -23,6 +23,7 @@ public class character {
 	private item[] inventory = new item [30];
 	private int lastItem = 0;
 
+	//list of spells
 	private ArrayList<spell> spellbook = new ArrayList<spell>();
 	
 	//leveling info
@@ -39,8 +40,8 @@ public class character {
 	//healh and mana stats
 	private int maxHealth = 100;
 	public int currHealth = 100;
-	public int maxMana = 200;
-	private int currMana = 200;
+	private int maxMana = 200;
+	public int currMana = 200;
 
 	public int gold = 10;
 
@@ -57,6 +58,8 @@ public class character {
 		currHealth = maxHealth;
 
 		worldMap map = new worldMap(35);
+		spell temp = new spell(25, true, "Fireball");
+		addSpell(temp);
 	}
 
 
@@ -322,8 +325,32 @@ public class character {
 		lastItem--;
 	}
 
+
+	//Adds spell to spell book
 	public void addSpell(spell newSpell){
 		spellbook.add(newSpell);
+	}
+
+	//casts
+	private int castSpell(int n){
+		//takes the mana
+		currMana -= spellbook.get(n).manaCost;
+		
+		//if damaging, returns the damage value
+		if(spellbook.get(n).offensive){
+			return spellbook.get(n).damage;
+		}
+
+		//if healing, just heal the character and return 0
+		else{
+
+			currHealth += spellbook.get(n).damage;
+			if(currHealth > maxHealth){
+				currHealth = maxHealth;
+			}
+
+			return 0;
+		}
 	}
 
 
