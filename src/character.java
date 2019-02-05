@@ -373,7 +373,7 @@ public class character {
 	private int inCity(){
 
 		//runs through every city in the map
-		for(int i = 0; i < map.cities.length; ii++) {
+		for(int i = 0; i < map.cities.length; i++) {
 			if (location[0] == map.cities[i].x && location[1] == map.cities[i].y) {
 				return i;
 			}
