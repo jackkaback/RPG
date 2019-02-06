@@ -325,6 +325,25 @@ public class character {
 		lastItem--;
 	}
 
+	//prints the inventory
+	public void printInventory(){
+		for(int i = 0; i < lastItem; i++){
+
+			//Prints the type of item
+			if(inventory[i] instanceof armor){
+				System.out.print("Armor:\t");
+			}
+			else if(inventory[i] instanceof weapon){
+				System.out.print("Weapon:\t");
+			}
+			else if(inventory[i] instanceof potion){
+				System.out.print("Potion:\t");
+			}
+
+			System.out.println(inventory[i].name);
+		}
+	}
+
 
 	//Adds spell to spell book
 	public void addSpell(spell newSpell){

@@ -1,14 +1,13 @@
 public class weapon extends item{
 
 	private int attackBoost;
-	private String weaponName;
 
 
 	//initializer
 	public weapon(int attackBoost, String weaponName){
 		this.attackBoost = attackBoost;
 		cost = attackBoost * 2;
-		this.weaponName = weaponName;
+		this.name = weaponName;
 	}
 
 	public int getAttackBoost() {
@@ -16,6 +15,6 @@ public class weapon extends item{
 	}
 
 	public String getWeaponName() {
-		return weaponName;
+		return name;
 	}
 }
