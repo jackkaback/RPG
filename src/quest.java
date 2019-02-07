@@ -10,10 +10,11 @@ public class quest{
 
 	//initalizer
 	//TODO set destination
-	public quest(int[] location, int lvl){
+	public quest(int x, int y, int lvl){
 		Random rand = new Random();
 		rewardXp = rand.nextInt(10 * lvl);
 		rewardGold = rand.nextInt(10 * lvl);
-		this.start = location;
+		this.start[0] = x;
+		this.start[1] = y;
 	}
 }

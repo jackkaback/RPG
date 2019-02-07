@@ -10,4 +10,9 @@ public class city {
 		this.y = y;
 		cityName = name;
 	}
+
+	public quest generateQuest(int level){
+		quest retQuest = new quest(x, y, level);
+		return retQuest;
+	}
 }

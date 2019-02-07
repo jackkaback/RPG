@@ -26,6 +26,9 @@ public class character {
 	//list of spells
 	private ArrayList<spell> spellbook = new ArrayList<spell>();
 	
+	//quest list
+	public ArrayList<quest> questLog = new ArrayList<quest>();
+
 	//leveling info
 	public int level = 1;
 	private int Exp = 0;
@@ -54,12 +57,20 @@ public class character {
 		System.out.print("The old man asks \"What's your name Stranger?\"\t");
 		name = input.next();
 
+		//generate the starting stats
 		Goat();
 		currHealth = maxHealth;
 
+		//genarte world
 		worldMap map = new worldMap(35);
+		
+		//adds a free speel
 		spell temp = new spell(25, true, "Fireball");
 		addSpell(temp);
+
+		//adds the final quest
+		quest finalQuest = new quest(0,0, 20);
+		addQuest(finalQuest);
 	}
 
 
@@ -344,6 +355,35 @@ public class character {
 		}
 	}
 
+	//prints the info for the quest
+	public void printQuests(){
+		for(int i = 0; i < questLog.size(); i++){
+
+			if(questLog.get(i).finished){
+				System.out.println("Ready to turn it at " + questLog.get(i).start);
+			}
+			else{
+				System.out.println("Enemy spawned at " + questLog.get(i).destination);
+			}
+		}
+	}
+
+	//prints the spellbook
+	public void printSpells(){
+		for(int i = 0; spellbook.size(); i++){
+			if(spellbook.get(i).offensive){
+				System.out.println(spellbook.get(i).name + "\t points of damage: " + spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost);
+			}
+			else{
+				System.out.println(spellbook.get(i).name + "\t heals: " + spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost);
+			}
+		}
+	}
+
+	//adds a quest to the quest list
+	public void addQuest(quest q){
+		questLog.add(q);
+	}
 
 	//Adds spell to spell book
 	public void addSpell(spell newSpell){
