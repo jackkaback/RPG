@@ -1,12 +1,21 @@
 public class merchant{
 
-	private item[] supply = new item[30];
+	private item[] itemSupply = new item[30];
+	private spell[] spellSupply = new spell[10];
 
 	public merchant(){
-		initializeItems();
 	}
 
-	private void initializeItems(){
+	public void runStartUp(int lvl){
+		initializeItems(lvl);
+		initializeSpells(lvl);
+	}
+
+	private void initializeItems(int lvl){
+
+	}
+
+	private void initializeSpells(int lvl){
 
 	}
 }

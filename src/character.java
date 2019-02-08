@@ -153,6 +153,12 @@ public class character {
 				System.out.println("You're in " + map.cities[temp].cityName);
 			}
 
+			//Start quest fight
+			else if(atQuest()){
+				generateFight();
+				updateQuest();
+			}
+
 			//MOSS PEOPLE STUFF
 			else if(inMoss()){
 				System.out.println("You've entered a moss colony");
@@ -370,7 +376,7 @@ public class character {
 
 	//prints the spellbook
 	public void printSpells(){
-		for(int i = 0; spellbook.size(); i++){
+		for(int i = 0; i < spellbook.size(); i++){
 			if(spellbook.get(i).offensive){
 				System.out.println(spellbook.get(i).name + "\t points of damage: " + spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost);
 			}
@@ -383,6 +389,26 @@ public class character {
 	//adds a quest to the quest list
 	public void addQuest(quest q){
 		questLog.add(q);
+	}
+
+	//sets quest completed
+	public void updateQuest(){
+		for(int i = 0; i < questLog.size(); i++){
+			if(questLog.get(i).destination == location){
+				questLog.get(i).finished = true;
+			}
+		}
+	}
+
+	//checks if user is at the quest location
+	public boolean atQuest(){
+		for(int i = 0; i < questLog.size(); i++){
+			if(questLog.get(i).destination == location && !questLog.get(i).finished){
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	//Adds spell to spell book

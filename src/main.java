@@ -34,7 +34,13 @@ public class main {
 
 		user.mainLoop();
 		playCredits(user.currHealth > 0);
-		
+
+		System.out.print("Continue? ");
+		String temp = input.next().toLowerCase();
+
+		if(temp.contains("y")){
+			user.mainLoop();
+		}
 	}
 
 	//write the credits. add timer between parts of credits add people's specific contributions to the credits

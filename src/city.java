@@ -11,6 +11,10 @@ public class city {
 		cityName = name;
 	}
 
+	public void enterCity(int lvl){
+		merch.runStartUp(lvl);
+	}
+
 	public quest generateQuest(int level){
 		quest retQuest = new quest(x, y, level);
 		return retQuest;
