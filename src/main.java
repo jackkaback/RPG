@@ -17,17 +17,17 @@ public class main {
 			char ch1 = (char) input.nextByte();
 
 			if (ch1 == 1) {
-				weapon steve = new weapon(60, "Umbra");
-				user.addInventory(steve);
-				user.addWeapon(steve);
+				weapon zeWeapon = new weapon(60, "Umbra");
+				user.addInventory(zeWeapon);
+				user.addWeapon(zeWeapon);
 				break;
 			} else if (ch1 == 2) {
 				user.gold += 1000;
 				break;
 			} else if (ch1 == 3) {
-				armor steve = new armor(10, 100, "black mesa");
-				user.addInventory(steve);
-				user.addArmor(steve);
+				armor zeArmor = new armor(10, 100, "black mesa");
+				user.addInventory(zeArmor);
+				user.addArmor(zeArmor);
 				break;
 			}
 		}

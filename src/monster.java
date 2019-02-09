@@ -25,6 +25,10 @@ public class monster {
 		setRewardGold();
 	}
 
+	public int getAttack(){
+		return attack;
+	}
+
 	private void setAttack(){
 		attack = rand.nextInt(Lvl * 3) + 1;
 	}
@@ -70,5 +74,23 @@ public class monster {
 	}
 	private void setRewardGold(){
 		rewardGold = rand.nextInt(rewardExp) + 10;
+	}
+
+	//takes a physical hit
+	public void takePhysical(int playerAttack){
+		int temp = playerAttack - defense;
+		
+		if (temp < 0){
+			temp = 1;
+		}
+
+		HP -= temp;
+		System.out.println("You swung for " + temp + " damage");
+	}
+
+	//takes spell damage
+	public void takeSpell(int spellDamage){
+		HP -= spellDamage;
+		System.out.println("You dealt " + spellDamage + " damage to the " + name);
 	}
 }

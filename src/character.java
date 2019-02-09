@@ -429,6 +429,7 @@ public class character {
 		//if healing, just heal the character and return 0
 		else{
 
+			System.out.println("You heal for :" + spellbook.get(n).damage);
 			currHealth += spellbook.get(n).damage;
 			if(currHealth > maxHealth){
 				currHealth = maxHealth;
@@ -438,16 +439,76 @@ public class character {
 		}
 	}
 
+	//TODO this
+	private int getSpellChoice(){
+
+	}
+
 
 	//TODO this
+	//Generates the fight and does the fight
 	private void generateFight(){
-		monster Steve = new monster(level);
+		monster zeMonster = new monster(level);
+		System.out.println("You've encountered a " + zeMonster.getName());
+		while (currHealth > 0 && zeMonster.isAlive()){
+			
+			// 1 attack, 2 spell, 3 potion
+			int move = getMove();
 
-		while (currHealth > 0 && Steve.isAlive()){
+			//attacks
+			if(move == 1){
+				if(rand.nextInt(100) <= luck){
+					zeMonster.takePhysical(attack * 2);
+				}
+				else{
+					zeMonster.takePhysical
+				}
+			}
 
+			//does spell stuff
+			else if(move == 2){
+				int temp = getSpellChoice();
+				int spellDam = castSpell(temp);
+
+				if(spellDam != 0){
+					zeMonster.takeSpell(spellDam);
+				}
+			}
+
+			//TODO potions
+			else if(move == 3){
+				System.out.println("SPELL STUFF");
+			}
+
+		}
+
+		if(!zeMonster.isAlive()){
+			System.out.println("You gained: " + zeMonster.getRewardExp() + " experience and " + 
+				zeMonster.getRewardGold() + " gold");
+			addExp(zeMonster.getRewardExp());
+			gold += zeMonster.getRewardGold();
 		}
 	}
 
+	//gets the user's move
+	private int getMove(){
+	
+		while(true){
+
+			System.out.println("Do you want to (a)ttack, cast a (s)pell, or use a (p)otion?");
+			String temp = input.next().toLowerCase();
+
+			if(temp.contains("a")){
+				return 1;
+			}
+			else if(temp.contains("s")){
+				return 2;
+			}
+			else if(temp.contains("p")){
+				return 3;
+			}
+		}
+	}
 
 	//checks if the user is in the moss colony
 	private boolean inMoss(){

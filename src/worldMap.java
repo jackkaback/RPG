@@ -14,7 +14,8 @@ public class worldMap{
 
 		//names of the cities and the array of X/Y cordinates for the cities
 		String[] names = new String [] {"John", "New Mombasa", "Seattle", "Seoul", "Yemen", "Vvardenfell", "Los Santos",
-				"Shermer", "Mordor", "Rapture","Podgorica", "Ljubljana", "Elvenwood", "Megaton", "Hanover"};
+				"Shermer", "Mordor", "Rapture","Podgorica", "Ljubljana", "Elvenwood", "Megaton", "Hanover",
+				"The town with no name", "City 17"};
 
 		city[] cities = new city[names.length];
 		int[] X = new int[cities.length];
