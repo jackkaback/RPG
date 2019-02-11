@@ -17,31 +17,19 @@ public class monster {
 	//initializer
 	public monster(int LvL){
 		this.Lvl = LvL;
-		setAttack();
-		setDefense();
-		setHP();
+		attack = rand.nextInt(Lvl * 3) + 1;
+		defense = rand.nextInt(Lvl * 3);
+		HP = rand.nextInt(Lvl * 10) + 20;
+		ewardExp = attack + defense + HP;
+		rewardGold = rand.nextInt(rewardExp) + 10;
 		setName();
-		setRewardExp();
-		setRewardGold();
 	}
 
 	public int getAttack(){
 		return attack;
 	}
 
-	private void setAttack(){
-		attack = rand.nextInt(Lvl * 3) + 1;
-	}
-
-	private void setDefense(){
-		defense = rand.nextInt(Lvl * 3);
-	}
-
-	private void setHP(){
-		HP = rand.nextInt(Lvl * 10) + 20;
-	}
-
-	//getter and setter for the name
+	//getter for the name
 	public String getName() {
 		return name;
 	}
@@ -50,6 +38,7 @@ public class monster {
 		return HP > 0;
 	}
 
+	//setter for the name
 	private void setName(){
 		String[] arr = new String[]  {"loch ness monster", "guard", "mob of bunnies", "Gryffin", "goblin",
 				"rotting fish", "thief", "cannibal", "wolf", "MISSINGNO", "lost soul", "giant spider", "dragon", "giant",
@@ -59,21 +48,14 @@ public class monster {
 	}
 
 
-	//getter and setter for reward xp
+	//getter for reward xp
 	public int getRewardExp(){
 		return rewardExp;
 	}
-	private void setRewardExp(){
-		rewardExp = attack + defense + HP;
-	}
-
 
 	//getter and setter for gold
 	public int getRewardGold(){
 		return rewardGold;
-	}
-	private void setRewardGold(){
-		rewardGold = rand.nextInt(rewardExp) + 10;
 	}
 
 	//takes a physical hit
