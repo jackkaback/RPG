@@ -317,6 +317,16 @@ public class character {
 	private void sortInventory(){
 		for(int i = 0; i < lastItem; i++) {
 			for (int j = 1; j < (lastItem - i); j++) {
+
+				//sorts an empty slot to the end of the list
+				if(inventory[j-1] == null) {
+					//swap elements
+					item temp = inventory[j - 1];
+					inventory[j - 1] = inventory[j];
+					inventory[j] = temp;
+					continue;
+				}
+
 				if(inventory[j-1].cost < inventory[j].cost) {
 					//swap elements
 					item temp = inventory[j - 1];
@@ -474,6 +484,25 @@ public class character {
 				}
 			}
 		}
+	}
+
+	private void usePotion(int n){
+		currHealth += inventory[n].healthBoost;
+		if(currHealth > maxHealth){
+			currHealth = maxHealth;
+		}
+
+		currMana += inventory[n].manaBoost;
+		if(currMana > maxMana){
+			currMana = maxMana;
+		}
+
+		//removes the potion, swaps it with the last item
+		//adjusts length of inventory, and re-sorts
+		inventory[n] = null;
+		inventory[n] = inventory[lastItem];
+		lastItem--;
+		sortInventory();
 	}
 
 
