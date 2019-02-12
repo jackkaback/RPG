@@ -1,5 +1,5 @@
 public class spell{
-	
+
 	public int damage;
 	public int manaCost;
 	public boolean offensive;

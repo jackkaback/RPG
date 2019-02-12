@@ -1,5 +1,5 @@
 public class potion extends item{
-	
+
 	public int healthBoost;
 	public int manaBoost;
 

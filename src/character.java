@@ -25,7 +25,7 @@ public class character {
 
 	//list of spells
 	private ArrayList<spell> spellbook = new ArrayList<spell>();
-	
+
 	//quest list
 	public ArrayList<quest> questLog = new ArrayList<quest>();
 
@@ -63,7 +63,7 @@ public class character {
 
 		//genarte world
 		worldMap map = new worldMap(35);
-		
+
 		//adds a free speel
 		spell temp = new spell(25, true, "Fireball");
 		addSpell(temp);
@@ -378,10 +378,10 @@ public class character {
 	public void printSpells(){
 		for(int i = 0; i < spellbook.size(); i++){
 			if(spellbook.get(i).offensive){
-				System.out.println(spellbook.get(i).name + "\t points of damage: " + spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost);
+				System.out.println("(" + i + ") " + spellbook.get(i).name + "\t points of damage: " + spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost);
 			}
 			else{
-				System.out.println(spellbook.get(i).name + "\t heals: " + spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost);
+				System.out.println("(" + i + ") " + spellbook.get(i).name + "\t heals: " + spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost);
 			}
 		}
 	}
@@ -420,7 +420,7 @@ public class character {
 	private int castSpell(int n){
 		//takes the mana
 		currMana -= spellbook.get(n).manaCost;
-		
+
 		//if damaging, returns the damage value
 		if(spellbook.get(n).offensive){
 			return spellbook.get(n).damage;
@@ -439,52 +439,92 @@ public class character {
 		}
 	}
 
-	//TODO this
+	//Get's the player choice for which spell to cast
 	private int getSpellChoice(){
+		while(true){
+			System.out.println("Which spell do you want to use?");
+			printSpells();
+			String temp = input.next();
+			if(isNumeric(temp)){
+				return Integer.parseInt(temp);
+			}
+		}
+	}
 
+	//prints out the potions only from the item list
+	private void printPotions(){
+		for(int i = 0; i < lastItem; i++){
+			if(inventory[i] instanceof potion){
+				System.out.println("(" + i + ") "+ inventory[i].name + " Health:" + 
+					inventory[i].healthBoost + " Mana: " + inventory[i].manaBoost);
+			}
+		}
+	}
+
+	private int getPotitonChoice(){
+		while(true){
+			int t;
+			System.out.println("Which potion do you want to use?");
+			printPotions();
+			String temp = input.next();
+			if(isNumeric(temp)){
+				t = Integer.parseInt(temp);
+				if(inventory[t] instanceof potion){
+					return t;
+				}
+			}
+		}
 	}
 
 
 	//TODO this
 	//Generates the fight and does the fight
 	private void generateFight(){
+		Random rand = new Random();
+
 		monster zeMonster = new monster(level);
 		System.out.println("You've encountered a " + zeMonster.getName());
 		while (currHealth > 0 && zeMonster.isAlive()){
-			
+
 			// 1 attack, 2 spell, 3 potion
 			int move = getMove();
 
 			//attacks
 			if(move == 1){
 				if(rand.nextInt(100) <= luck){
+					System.out.println("Critical hit");
 					zeMonster.takePhysical(attack * 2);
 				}
 				else{
-					zeMonster.takePhysical
+					zeMonster.takePhysical(attack);
 				}
 			}
 
 			//does spell stuff
 			else if(move == 2){
-				int temp = getSpellChoice();
-				int spellDam = castSpell(temp);
+				int spellDam = castSpell(getSpellChoice());
 
 				if(spellDam != 0){
-					zeMonster.takeSpell(spellDam);
+					if(rand.nextInt(100) <= luck){
+						System.out.println("You managed to double cast");
+						zeMonster.takeSpell(spellDam * 2);
+					}
+					else{
+						zeMonster.takeSpell(spellDam);
+					}
 				}
 			}
 
 			//TODO potions
 			else if(move == 3){
-				System.out.println("SPELL STUFF");
+				int p = getPotitonChoice();
 			}
 
 		}
 
 		if(!zeMonster.isAlive()){
-			System.out.println("You gained: " + zeMonster.getRewardExp() + " experience and " + 
-				zeMonster.getRewardGold() + " gold");
+			System.out.println("You gained: " + zeMonster.getRewardExp() + " experience and " +
+					zeMonster.getRewardGold() + " gold");
 			addExp(zeMonster.getRewardExp());
 			gold += zeMonster.getRewardGold();
 		}
@@ -492,7 +532,7 @@ public class character {
 
 	//gets the user's move
 	private int getMove(){
-	
+
 		while(true){
 
 			System.out.println("Do you want to (a)ttack, cast a (s)pell, or use a (p)otion?");
@@ -527,5 +567,20 @@ public class character {
 
 		//if not in a city then return -1
 		return -1;
+	}
+
+	//checks if a string is a number
+	private static boolean isNumeric(String checkString) {
+		if (checkString == null || checkString == ""){
+			return false;
+		}
+
+		//this checks if the input is only numbers
+		for (int ii = 0; ii < checkString.length(); ii++) {
+			if (checkString.charAt(ii) < '0' || checkString.charAt(ii) > '9') {
+				return false;
+			}
+		}
+		return true;
 	}
 }

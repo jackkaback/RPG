@@ -20,7 +20,7 @@ public class monster {
 		attack = rand.nextInt(Lvl * 3) + 1;
 		defense = rand.nextInt(Lvl * 3);
 		HP = rand.nextInt(Lvl * 10) + 20;
-		ewardExp = attack + defense + HP;
+		rewardExp = attack + defense + HP;
 		rewardGold = rand.nextInt(rewardExp) + 10;
 		setName();
 	}
@@ -61,7 +61,7 @@ public class monster {
 	//takes a physical hit
 	public void takePhysical(int playerAttack){
 		int temp = playerAttack - defense;
-		
+
 		if (temp < 0){
 			temp = 1;
 		}

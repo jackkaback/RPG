@@ -45,7 +45,7 @@ public class main {
 
 	//write the credits. add timer between parts of credits add people's specific contributions to the credits
 	public static void playCredits(Boolean victory){
-		
+
 		if(victory){
 			System.out.println("You won!");
 		}
@@ -55,12 +55,12 @@ public class main {
 		}
 
 		System.out.println("Programming: Jack and Talons");
-		
+
 		System.out.println("Translation:\n" +
 				"French: Micheal and Matt C.\n" +
 				"Spanish: Jack\n" +
 				"German: Rachel");
-		
+
 		System.out.println("Ideas:\n" +
 				"Evil shoebox: He who shall not be named\n" + //add
 				"Random axe salesman: Dennis ''The Paw'' Salo (he wanted to be known as 'the paw' then complained about the names stuipdity)\n" +//add
