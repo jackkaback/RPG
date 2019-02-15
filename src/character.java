@@ -544,10 +544,30 @@ public class character {
 				}
 			}
 
-			//TODO potions
+			//Takes a potion
 			else if(move == 3){
-				int p = getPotitonChoice();
+				usePotion(getPotitonChoice());
 			}
+
+
+			int tempDamage = zeMonster.getAttack() - defence;
+			if(tempDamage < 0){
+				tempDamage = 1;
+			}
+
+			int tLuck = rand.nextInt(100);
+			if(tLuck = luck){
+				System.out.println("You managed a lucky dodge and take no damage");
+				continue;
+			}
+			else if(tLuck < luck){
+				System.out.println("You managed a decent dodge and take reduced damage");
+				tempDamage /= 2;
+			}
+
+			currHealth -= tempDamage;
+			System.out.println("The " + zeMonster.getName() + " hit you for " + tempDamage);
+			System.out.println("You have " + currHealth + " health left");
 
 		}
 

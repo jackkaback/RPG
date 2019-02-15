@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class quest{
-	
+
 	public int[] destination = {0,0};
 	public int[] start = {0,0};
 	public boolean finished = false;
