@@ -601,7 +601,7 @@ public class character {
 
 	//checks if the user is in the moss colony
 	private boolean inMoss(){
-		return location == map.mossColony;
+		return location == map.moss.location;
 	}
 
 	//checks if the user is in a city and returns which on they're in

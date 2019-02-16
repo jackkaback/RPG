@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class worldMap{
 	public city[] cities;
-	public int[] mossColony = {0,0};
+	public mossColony moss;
 
 	public worldMap(int size){
 		generateCities(size);
@@ -58,21 +58,23 @@ public class worldMap{
 
 	//genarates the mossColony location
 	private void generateMossColony(int range){
-
+		int[] temp = {0,0};
 		//randomly places the moss colony
 		Random rand = new Random();
-		mossColony[0] = rand.nextInt(2 * range + 1) - range;
-		mossColony[1] = rand.nextInt(2 * range + 1) - range;
+		temp[0] = rand.nextInt(2 * range + 1) - range;
+		temp[1] = rand.nextInt(2 * range + 1) - range;
 
 
 		//makes sure it doesn't overlap with a city
 		for(int jj = 0; jj < cities.length; jj++){
 
-			if (cities[jj].x == mossColony[0] && cities[jj].y == mossColony[1]){
-				mossColony[0] = rand.nextInt(2 * range + 1) - range;
-				mossColony[1] = rand.nextInt(2 * range + 1) - range;
+			if (cities[jj].x == temp[0] && cities[jj].y == temp[1]){
+				temp[0] = rand.nextInt(2 * range + 1) - range;
+				temp[1] = rand.nextInt(2 * range + 1) - range;
 				jj = 0;
 			}
 		}
+
+		moss = new mossColony(temp[0], temp[1]);
 	}
 }
