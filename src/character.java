@@ -496,13 +496,7 @@ public class character {
 		if(currMana > maxMana){
 			currMana = maxMana;
 		}
-
-		//removes the potion, swaps it with the last item
-		//adjusts length of inventory, and re-sorts
-		inventory[n] = null;
-		inventory[n] = inventory[lastItem];
-		lastItem--;
-		sortInventory();
+		removeItem(n);
 	}
 
 
