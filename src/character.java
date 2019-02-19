@@ -500,7 +500,6 @@ public class character {
 	}
 
 
-	//TODO this
 	//Generates the fight and does the fight
 	private void generateFight(){
 		Random rand = new Random();
@@ -550,7 +549,7 @@ public class character {
 			}
 
 			int tLuck = rand.nextInt(100);
-			if(tLuck = luck){
+			if(tLuck == luck){
 				System.out.println("You managed a lucky dodge and take no damage");
 				continue;
 			}

@@ -42,7 +42,7 @@ public class monster {
 	private void setName(){
 		String[] arr = new String[]  {"loch ness monster", "guard", "mob of bunnies", "Gryffin", "goblin",
 				"rotting fish", "thief", "cannibal", "wolf", "MISSINGNO", "lost soul", "giant spider", "dragon", "giant",
-				"dwarf on a unicycle", "moss person", "BEARSHARK", "Hobo weilding an eggroll", "mailbox"};
+				"dwarf on a unicycle", "moss person", "BEARSHARK", "Hobo weilding an eggroll", "mailbox", "sharknado"};
 
 		name = arr[rand.nextInt((arr.length))];
 	}

@@ -2,9 +2,6 @@ import java.util.Random;
 
 public class weapon extends item{
 
-	private int attackBoost;
-
-
 	//initializer
 	public weapon(int attackBoost, String weaponName){
 		this.attackBoost = attackBoost;

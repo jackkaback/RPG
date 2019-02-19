@@ -31,21 +31,21 @@ public class merchant{
 
 			//armor
 			if(temp == 1){
-				armor t = new armor(rand.nextInt(minDefence, maxDefence + 1),
-					rand.nextInt(minHealth, maxHealth), "");
+				armor t = new armor(randInt(minDefence, maxDefence + 1),
+					randInt(minHealth, maxHealth), "");
 				itemSupply[i] = t;
 			}
 			
 			//weapon
 			else if(temp == 2){
-				weapon t = new weapon(rand.nextInt(minAttack, maxAttack + 1), "");
+				weapon t = new weapon(randInt(minAttack, maxAttack + 1), "");
 				itemSupply[i] = t;
 			}
 
 			//potion
 			else{
-				potion t = new potion(rand.nextInt(minHealth, maxHealth + 1),
-					rand.nextInt(minMana, maxMana), "");
+				potion t = new potion(randInt(minHealth, maxHealth + 1),
+					randInt(minMana, maxMana), "");
 				itemSupply[i] = t;
 			}
 		}
@@ -53,5 +53,9 @@ public class merchant{
 
 	private void initializeSpells(int lvl){
 
+	}
+
+	private int randInt(int x, int y){
+		return rand.nextInt(y - x) + x;
 	}
 }

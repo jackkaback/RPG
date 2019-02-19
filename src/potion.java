@@ -2,9 +2,6 @@ import java.util.Random;
 
 public class potion extends item{
 
-	public int healthBoost;
-	public int manaBoost;
-
 	public potion(int healthBoost, int manaBoost, String potionName){
 		this.healthBoost = healthBoost;
 		this.manaBoost = manaBoost;
