@@ -8,6 +8,7 @@ public class armor extends item{
 		this.healthBoost = healthBoost;
 		cost = healthBoost/2 + defenseBoost;
 
+		//no name causes it to generate a random name from a list
 		if(armorName == null || armorName.equals("")){
 			generateName();
 		}

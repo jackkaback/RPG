@@ -6,6 +6,8 @@ public class weapon extends item{
 	public weapon(int attackBoost, String weaponName){
 		this.attackBoost = attackBoost;
 		cost = attackBoost * 2;
+
+		//no name causes it to generate a random name from a list
 		if(weaponName == null || weaponName.equals("")){
 			generateName();
 		}

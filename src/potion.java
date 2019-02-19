@@ -6,6 +6,7 @@ public class potion extends item{
 		this.healthBoost = healthBoost;
 		this.manaBoost = manaBoost;
 		
+		//no name causes it to generate a random name from a list
 		if(potionName == null || potionName.equals("")){
 			generateName();
 		}
@@ -19,5 +20,7 @@ public class potion extends item{
 	private void generateName(){
 		Random rand = new Random();
 		String[] names = {"Elivor del vigor", "Vulgar"};
+
+		name = names[rand.nextInt(names.length)];
 	}
 }
