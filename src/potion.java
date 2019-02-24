@@ -19,7 +19,7 @@ public class potion extends item{
 
 	private void generateName(){
 		Random rand = new Random();
-		String[] names = {"Elivor del vigor", "Vulgar"};
+		String[] names = {"Elivor del vigor", "Vulgar", "normal potion"};
 
 		name = names[rand.nextInt(names.length)];
 	}

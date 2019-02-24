@@ -26,7 +26,7 @@ public class weapon extends item{
 
 	private void generateName(){
 		Random rand = new Random();
-		String[] names = {"Umbra", "Normal Sword"};
+		String[] names = {"Umbra", "Normal Sword", "Stick", "rotten fish", "Rusty wooden dagger", "Sharpend spoon"};
 
 		name = names[rand.nextInt(names.length)];
 	}

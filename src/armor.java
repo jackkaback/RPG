@@ -31,7 +31,7 @@ public class armor extends item{
 
 	private void generateName(){
 		Random rand = new Random();
-		String[] names = {"Some bent peice of metal", "Moss clothes"};
+		String[] names = {"Some bent peice of metal", "Moss clothes", "black mesa"};
 
 		name = names[rand.nextInt(names.length)];
 	}

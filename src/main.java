@@ -17,7 +17,7 @@ public class main {
 			char ch1 = (char) input.nextByte();
 
 			if (ch1 == 1) {
-				weapon zeWeapon = new weapon(60, "Umbra");
+				weapon zeWeapon = new weapon(60, "");
 				user.addInventory(zeWeapon);
 				user.addWeapon(zeWeapon);
 				break;
@@ -25,7 +25,7 @@ public class main {
 				user.gold += 1000;
 				break;
 			} else if (ch1 == 3) {
-				armor zeArmor = new armor(10, 100, "black mesa");
+				armor zeArmor = new armor(10, 100, "");
 				user.addInventory(zeArmor);
 				user.addArmor(zeArmor);
 				break;

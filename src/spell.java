@@ -32,14 +32,14 @@ public class spell{
 
 	private void generateNameDamging(){
 		Random rand = new Random();
-		String[] names = {"Fireball", "pew pew"};
+		String[] names = {"Fireball", "pew pew", "PEW", "death ray"};
 
 		name = names[rand.nextInt(names.length)];
 	}
 
 	private void generateNameDefensive(){
 		Random rand = new Random();
-		String[] names = {"Watershell", "Taco sandwich"};
+		String[] names = {"Watershell", "Taco sandwich", "health burst"};
 
 		name = names[rand.nextInt(names.length)];
 	}
