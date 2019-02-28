@@ -508,7 +508,7 @@ public class character {
 		System.out.println("You've encountered a " + zeMonster.getName());
 		while (currHealth > 0 && zeMonster.isAlive()){
 
-			// 1 attack, 2 spell, 3 potion
+			// 1 attack, 2 spell, 3 potion, 4 ability
 			int move = getMove();
 
 			//attacks
@@ -540,6 +540,11 @@ public class character {
 			//Takes a potion
 			else if(move == 3){
 				usePotion(getPotitonChoice());
+			}
+
+			//Uses an ability
+			else if(move == 4){
+				//TODO Ability stuff
 			}
 
 
@@ -577,10 +582,10 @@ public class character {
 
 		while(true){
 
-			System.out.println("Do you want to (a)ttack, cast a (s)pell, or use a (p)otion?");
+			System.out.println("Do you want to a(t)tack, cast a (s)pell, use a (p)otion, or use an a(b)ility?");
 			String temp = input.next().toLowerCase();
 
-			if(temp.contains("a")){
+			if(temp.contains("t")){
 				return 1;
 			}
 			else if(temp.contains("s")){
@@ -588,6 +593,9 @@ public class character {
 			}
 			else if(temp.contains("p")){
 				return 3;
+			}
+			else if(temp.contains("b")){
+				return 4;
 			}
 		}
 	}

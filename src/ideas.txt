@@ -3,6 +3,8 @@ IDEAS
 	* Random Axe salesman
 	* Politcally correct beggor
 	* Antique Road show
+	* Add abilities and status effects
+		* like confusion and poison status effects
 
 TODO
 	* Moss people (everything again)
