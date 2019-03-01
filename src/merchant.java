@@ -32,10 +32,10 @@ public class merchant{
 			//armor
 			if(temp == 1){
 				armor t = new armor(randInt(minDefence, maxDefence + 1),
-					randInt(minHealth, maxHealth), "");
+						randInt(minHealth, maxHealth), "");
 				itemSupply[i] = t;
 			}
-			
+
 			//weapon
 			else if(temp == 2){
 				weapon t = new weapon(randInt(minAttack, maxAttack + 1), "");
@@ -45,14 +45,28 @@ public class merchant{
 			//potion
 			else{
 				potion t = new potion(randInt(minHealth, maxHealth + 1),
-					randInt(minMana, maxMana), "");
+						randInt(minMana, maxMana), "");
 				itemSupply[i] = t;
 			}
 		}
 	}
 
 	private void initializeSpells(int lvl){
+		for(int i = 0; i < spellSupply.length; i++){
+			int temp = rand.nextInt(2);
 
+			//offensive spell
+			if(temp == 1){
+				spell s = new spell(randInt(minAttack, maxAttack + 1), true, "");
+				spellSupply[i] = s;
+			}
+
+			//defensive spell
+			else{
+				spell s = new spell(randInt(minAttack, maxAttack + 1), false, "");
+				spellSupply[i] = s;
+			}
+		}
 	}
 
 	private int randInt(int x, int y){

@@ -5,6 +5,7 @@ public class spell{
 	public int damage;
 	public int manaCost;
 	public boolean offensive;
+	public int uses = 5;
 	public String name;
 
 	public spell(int damage, boolean offensive, String name){

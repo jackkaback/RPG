@@ -269,14 +269,24 @@ public class character {
 				System.out.println("You leveled up!\nYou're lvl: " + level + " now");
 				addLvlPoints();
 
-				//set current HP and mana to max
-				currMana = maxMana;
-				currHealth = maxHealth;
 			} else {
 				break;
 			}
 
 		}
+
+		refresh();
+	}
+
+	//resets speel/ability uses and hp/mana
+	private void refresh(){
+		currHealth = maxHealth;
+		currMana = maxMana;
+		for(int i = 0; i < spellbook.size(); i++){
+			spellbook.get(i).uses = 5;
+		}
+
+		//TODO ABILITY REFRESH
 	}
 
 	//add or remove weapon
@@ -385,13 +395,39 @@ public class character {
 	}
 
 	//prints the spellbook
-	public void printSpells(){
-		for(int i = 0; i < spellbook.size(); i++){
-			if(spellbook.get(i).offensive){
-				System.out.println("(" + i + ") " + spellbook.get(i).name + "\t points of damage: " + spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost);
+	public void printSpells(boolean toCast){
+
+		//prints only the spells that can be cast
+		if(toCast){
+			for(int i = 0; i < spellbook.size(); i++){
+				if(spellbook.get(i).uses > 0){
+					if(spellbook.get(i).offensive){
+						System.out.println("(" + i + ") " + spellbook.get(i).name + "\t points of damage: " +
+								spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost + " uses: " +
+								spellbook.get(i).uses);
+					}
+					else{
+						System.out.println("(" + i + ") " + spellbook.get(i).name + "\t heals: " +
+								spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost + " uses: " +
+								spellbook.get(i).uses);
+					}
+				}
 			}
-			else{
-				System.out.println("(" + i + ") " + spellbook.get(i).name + "\t heals: " + spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost);
+		}
+
+		//prints all spells
+		else{
+			for(int i = 0; i < spellbook.size(); i++){
+				if(spellbook.get(i).offensive){
+					System.out.println("(" + i + ") " + spellbook.get(i).name + "\t points of damage: " +
+							spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost + " uses: " +
+							spellbook.get(i).uses);
+				}
+				else{
+					System.out.println("(" + i + ") " + spellbook.get(i).name + "\t heals: " +
+							spellbook.get(i).damage + "\t mana: " + spellbook.get(i).manaCost + " uses: " +
+							spellbook.get(i).uses);
+				}
 			}
 		}
 	}
@@ -431,6 +467,8 @@ public class character {
 		//takes the mana
 		currMana -= spellbook.get(n).manaCost;
 
+		spellbook.get(n).uses--;
+
 		//if damaging, returns the damage value
 		if(spellbook.get(n).offensive){
 			return spellbook.get(n).damage;
@@ -453,7 +491,7 @@ public class character {
 	private int getSpellChoice(){
 		while(true){
 			System.out.println("Which spell do you want to use?");
-			printSpells();
+			printSpells(true);
 			String temp = input.next();
 			if(isNumeric(temp)){
 				return Integer.parseInt(temp);
@@ -465,8 +503,8 @@ public class character {
 	private void printPotions(){
 		for(int i = 0; i < lastItem; i++){
 			if(inventory[i] instanceof potion){
-				System.out.println("(" + i + ") "+ inventory[i].name + " Health:" + 
-					inventory[i].healthBoost + " Mana: " + inventory[i].manaBoost);
+				System.out.println("(" + i + ") "+ inventory[i].name + " Health:" +
+						inventory[i].healthBoost + " Mana: " + inventory[i].manaBoost);
 			}
 		}
 	}

@@ -13,7 +13,8 @@ public class main {
 		//TODO build item list
 		while (true) {
 			System.out.println("So what do you do?");
-			System.out.println("(1) Blacksmith [better starting sword]\n(2) Banker [extra starting money]\n(3) Knight [better armor]");
+			System.out.println("(1) Blacksmith [better starting sword]\n(2) Banker [extra starting money]\n" +
+					"(3) Knight [better armor]");
 			char ch1 = (char) input.nextByte();
 
 			if (ch1 == 1) {
@@ -63,7 +64,9 @@ public class main {
 
 		System.out.println("Ideas:\n" +
 				"Evil shoebox: He who shall not be named\n" + //add
-				"Random axe salesman: Dennis ''The Paw'' Salo (he wanted to be known as 'the paw' then complained about the names stuipdity)\n" +//add
+				"Random axe salesman: Dennis ''The Paw'' Salo (he wanted to be known as 'the paw' then complained" +
+				"about the names stuipdity)\n" +//add
+
 				"Quoting the politically correct beggar: Brandon\n" + //add
 				"Antique road show, punny axe salesman, make moss people speak multiple languages: Michael");//add
 	}

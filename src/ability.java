@@ -4,6 +4,7 @@ public class ability{
 	public int maxTurns;
 	public int minTurns;
 	public int chanceToCast;
+	public int uses = 5;
 	public String name;
 
 	//TODO evertything involving this stuff
