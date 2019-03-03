@@ -12,6 +12,7 @@ public class monster {
 	private int attack;
 	private int rewardExp;
 	private int rewardGold;
+	public ability statusCondition = null;
 
 
 	//initializer
@@ -71,9 +72,47 @@ public class monster {
 		System.out.println("You swung for " + temp + " damage");
 	}
 
+	public void takeConfusion(){
+		int selfDamage = (attack - defense)
+		if(selfDamage < 0){
+			selfDamage = 1;
+		}
+		System.out.println("The " + name + " did " + selfDamage + " points of damge to itself");
+
+		HP -= selfDamage;
+	}
+
 	//takes spell damage
 	public void takeSpell(int spellDamage){
 		HP -= spellDamage;
 		System.out.println("You dealt " + spellDamage + " damage to the " + name);
+	}
+
+	public void applyStatus(ability status){
+		this.statusCondition = status;
+	}
+
+	public void updateStatus(){
+		if(statusCondition == null){
+			return;
+		}
+
+		statusCondition.turnsRunning++;
+	
+		if(statusCondition.turnsRunning == statusCondition.maxTurns){
+			exitStatus();
+		}
+
+		if(statusCondition.turnsRunning > statusCondition.minTurns){
+			temp = rand.nextInt(2);
+			if(temp == 1){
+				exitStatus();
+			}
+		}
+	}
+
+	private void exitStatus(){
+		System.out.println("The " + name + " has recovered from " + statusCondition.name);
+		this.statusCondition = null;
 	}
 }

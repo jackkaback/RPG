@@ -585,25 +585,37 @@ public class character {
 				//TODO Ability stuff
 			}
 
+			//apply confusion damage
+			int temp = rand.nextInt(2);
+			
+			//deals damage to self if confused
+			if (temp == 1 && zeMonster.statusCondition instanceof confusion){
+				zeMonster.takeConfusion();
+			}			
 
-			int tempDamage = zeMonster.getAttack() - defence;
-			if(tempDamage < 0){
-				tempDamage = 1;
+			else{
+
+				int tempDamage = zeMonster.getAttack() - defence;
+				if(tempDamage < 0){
+					tempDamage = 1;
+				}
+
+				int tLuck = rand.nextInt(100);
+				if(tLuck == luck){
+					System.out.println("You managed a lucky dodge and take no damage");
+					continue;
+				}
+				else if(tLuck < luck){
+					System.out.println("You managed a decent dodge and take reduced damage");
+					tempDamage /= 2;
+				}
+
+				currHealth -= tempDamage;
+				System.out.println("The " + zeMonster.getName() + " hit you for " + tempDamage);
+				System.out.println("You have " + currHealth + " health left");
 			}
 
-			int tLuck = rand.nextInt(100);
-			if(tLuck == luck){
-				System.out.println("You managed a lucky dodge and take no damage");
-				continue;
-			}
-			else if(tLuck < luck){
-				System.out.println("You managed a decent dodge and take reduced damage");
-				tempDamage /= 2;
-			}
-
-			currHealth -= tempDamage;
-			System.out.println("The " + zeMonster.getName() + " hit you for " + tempDamage);
-			System.out.println("You have " + currHealth + " health left");
+			zeMonster.updateStatus();
 
 		}
 
