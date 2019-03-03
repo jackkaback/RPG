@@ -149,6 +149,7 @@ public class character {
 			int temp = inCity();
 
 			if(temp != -1){
+				//TODO
 				//CITY STUFF
 				System.out.println("You're in " + map.cities[temp].cityName);
 			}
@@ -159,6 +160,7 @@ public class character {
 				updateQuest();
 			}
 
+			//TODO
 			//MOSS PEOPLE STUFF
 			else if(inMoss()){
 				System.out.println("You've entered a moss colony");
@@ -180,22 +182,22 @@ public class character {
 			System.out.println("(N)orth, (S)outh, (E)ast, or (W)est");
 			String temp = input.next().toLowerCase();
 
-			if(temp.contains("n")){
+			if(temp.contains("n") || temp.contains("1")){
 				System.out.println("You move north");
 				location[0]++;
 				break;
 			}
-			else if(temp.contains("s")){
+			else if(temp.contains("s") || temp.contains("2")){
 				System.out.println("You move south");
 				location[0]--;
 				break;
 			}
-			else if(temp.contains("e")){
+			else if(temp.contains("e") || temp.contains("3")){
 				System.out.println("You move East");
 				location[1]++;
 				break;
 			}
-			else if(temp.contains("w")){
+			else if(temp.contains("w") || temp.contains("4")){
 				System.out.println("You move West");
 				location[1]--;
 				break;
@@ -227,23 +229,24 @@ public class character {
 			System.out.println("(A)ttack, (D)efense, (L)uck, (H)ealth, or (M)ana");
 
 			String temp = input.nextLine().toLowerCase();
-			if(temp.contains("a")){
+
+			if(temp.contains("a") || temp.contains("1")){
 				attack += 3;
 				ii++;
 			}
-			else if(temp.contains("d")){
+			else if(temp.contains("d") || temp.contains("2")){
 				defence += 3;
 				ii++;
 			}
-			else if(temp.contains("l")){
+			else if(temp.contains("l") || temp.contains("3")){
 				luck += 1;
 				ii++;
 			}
-			else if(temp.contains("h")){
+			else if(temp.contains("h") || temp.contains("4")){
 				maxHealth += 10;
 				ii++;
 			}
-			else if(temp.contains("m")){
+			else if(temp.contains("m") || temp.contains("5")){
 				maxMana += 10;
 				ii++;
 			}
@@ -615,6 +618,7 @@ public class character {
 				System.out.println("You have " + currHealth + " health left");
 			}
 
+			zeMonster.doStatus();
 			zeMonster.updateStatus();
 
 		}
@@ -635,16 +639,16 @@ public class character {
 			System.out.println("Do you want to a(t)tack, cast a (s)pell, use a (p)otion, or use an a(b)ility?");
 			String temp = input.next().toLowerCase();
 
-			if(temp.contains("t")){
+			if(temp.contains("t") || temp.contains("1")){
 				return 1;
 			}
-			else if(temp.contains("s")){
+			else if(temp.contains("s") || temp.contains("2")){
 				return 2;
 			}
-			else if(temp.contains("p")){
+			else if(temp.contains("p") || temp.contains("3")){
 				return 3;
 			}
-			else if(temp.contains("b")){
+			else if(temp.contains("b") || temp.contains("4")){
 				return 4;
 			}
 		}
@@ -660,6 +664,8 @@ public class character {
 
 		//runs through every city in the map
 		for(int i = 0; i < map.cities.length; i++) {
+
+			//returns the index of a city if the player is there
 			if (location[0] == map.cities[i].x && location[1] == map.cities[i].y) {
 				return i;
 			}

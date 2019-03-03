@@ -88,10 +88,22 @@ public class monster {
 		System.out.println("You dealt " + spellDamage + " damage to the " + name);
 	}
 
+	//Does the status condition to the monster
+	public void doStatus(){
+
+		//ignore if confused or non existant
+		if(statusCondition == null || statusCondition instanceof confusion){
+			return;
+		}
+	
+	}
+
+	//Adds the status condition
 	public void applyStatus(ability status){
 		this.statusCondition = status;
 	}
 
+	//updates the status condition
 	public void updateStatus(){
 		if(statusCondition == null){
 			return;
