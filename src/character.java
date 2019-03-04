@@ -26,6 +26,8 @@ public class character {
 	//list of spells
 	private ArrayList<spell> spellbook = new ArrayList<spell>();
 
+	private ArrayList<ability> powers = new ArrayList<ability>();
+
 	//quest list
 	public ArrayList<quest> questLog = new ArrayList<quest>();
 
@@ -64,9 +66,18 @@ public class character {
 		//genarte world
 		worldMap map = new worldMap(35);
 
-		//adds a free speel
+		//adds a free spell
 		spell temp = new spell(25, true, "Fireball");
 		addSpell(temp);
+
+		//adds onfusion ability
+		confusion con = new confusion();
+		addAbility(con);
+
+		//adds poison power
+		ability poison = new ability(4, 80);
+		poison.name = "poison";
+		addAbility(poison);
 
 		//adds the final quest
 		quest finalQuest = new quest(0,0, 20);
@@ -281,7 +292,7 @@ public class character {
 		refresh();
 	}
 
-	//resets speel/ability uses and hp/mana
+	//resets spell/ability uses and hp/mana
 	private void refresh(){
 		currHealth = maxHealth;
 		currMana = maxMana;
@@ -289,7 +300,9 @@ public class character {
 			spellbook.get(i).uses = 5;
 		}
 
-		//TODO ABILITY REFRESH
+		for(int i = 0; i < powers.size(); i++){
+			powers.get(i).uses = 5;
+		}
 	}
 
 	//add or remove weapon
@@ -435,6 +448,26 @@ public class character {
 		}
 	}
 
+	//prints the powers
+	public void printAbilities(boolean toCast){
+
+		//prints only the powers that can be used
+		if(toCast){
+			for(int i = 0; i < powers.size(); i++){
+				if(powers.get(i).uses > 0){
+					System.out.println("(" + i + ") " + powers.get(i).name + " uses: " + powers.get(i).uses);
+				}
+			}
+		}
+
+		//prints all powers
+		else{
+			for(int i = 0; i < powers.size(); i++){
+				System.out.println("(" + i + ") " + powers.get(i).name + " uses: " + powers.get(i).uses);
+			}
+		}
+	}
+
 	//adds a quest to the quest list
 	public void addQuest(quest q){
 		questLog.add(q);
@@ -458,6 +491,11 @@ public class character {
 		}
 
 		return false;
+	}
+
+	//Adds ability to list
+	public void addAbility(ability able){
+		powers.add(able);
 	}
 
 	//Adds spell to spell book
