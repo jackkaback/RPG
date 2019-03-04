@@ -71,12 +71,12 @@ public class character {
 		addSpell(temp);
 
 		//adds onfusion ability
-		confusion con = new confusion();
+		confusion con = new confusion(2, 50);
 		addAbility(con);
 
 		//adds poison power
-		ability poison = new ability(4, 80);
-		poison.name = "poison";
+		ability poison = new ability();
+		poison.setup(4, 80, "poison");
 		addAbility(poison);
 
 		//adds the final quest

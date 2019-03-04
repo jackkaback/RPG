@@ -73,7 +73,7 @@ public class monster {
 	}
 
 	public void takeConfusion(){
-		int selfDamage = (attack - defense)
+		int selfDamage = (attack - defense);
 		if(selfDamage < 0){
 			selfDamage = 1;
 		}
@@ -116,7 +116,7 @@ public class monster {
 		}
 
 		if(statusCondition.turnsRunning > statusCondition.minTurns){
-			temp = rand.nextInt(2);
+			int temp = rand.nextInt(2);
 			if(temp == 1){
 				exitStatus();
 			}

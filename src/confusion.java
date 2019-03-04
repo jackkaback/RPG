@@ -1,9 +1,9 @@
 public class confusion extends ability{
 	
-	public confusion(){
-		minTurns = 2;
+	public confusion(int minTurns, int chanceToCast){
+		this.minTurns = minTurns;
 		maxTurns = (int) 2.5 * minTurns;
-		chanceToCast = 50;
+		this.chanceToCast = chanceToCast;
 		name = "Confusion";
 	}
 }

@@ -52,6 +52,9 @@ public class merchant{
 	}
 
 	private void initializeSpells(int lvl){
+		int minAttack = 2 * lvl;
+		int maxAttack = 5 * lvl;
+
 		for(int i = 0; i < spellSupply.length; i++){
 			int temp = rand.nextInt(2);
 
