@@ -1,6 +1,12 @@
 import java.util.Scanner;
 import java.util.Random;
 
+/**
+ * @author      Jack Kaback <jackkaback@gmail.com>
+ * @version     0.6
+ * @since       0.0
+ */
+
 
 public class main {
 

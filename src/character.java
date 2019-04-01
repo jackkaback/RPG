@@ -3,6 +3,12 @@ import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * @author      Jack Kaback <jackkaback@gmail.com>
+ * @version     0.6
+ * @since       0.0
+ */
+
 public class character {
 
 	private Scanner input = new Scanner(System.in);
@@ -26,6 +32,7 @@ public class character {
 	//list of spells
 	private ArrayList<spell> spellbook = new ArrayList<spell>();
 
+	//ability list
 	private ArrayList<ability> powers = new ArrayList<ability>();
 
 	//quest list
